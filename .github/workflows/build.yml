@@ -19,13 +19,15 @@ jobs:
           java-version: '17'
 
       - name: Grant execute permission
-        run: chmod +x gradlew
+        run: chmod +x BankNotifySimulator/gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: |
+          cd BankNotifySimulator
+          ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: BankNotifySimulator/app/build/outputs/apk/debug/app-debug.apk
